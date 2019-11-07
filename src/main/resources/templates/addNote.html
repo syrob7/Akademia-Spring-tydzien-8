@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <title>Add Note</title>
+</head>
+<body>
+<h1 align="center">Add Note</h1>
+<form th:action="@{/save-new-note}" th:object="${note}" method="post">
+    <table align="center" border="0" cellpadding="4" cellspacing="1">
+        <tr>
+            <td><label th:text="#{msg.Content}"/></td>
+            <td><textarea th:field="*{content}"/></td>
+            <td class="validation-error" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Name Error</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center" bgcolor="#ffffff"><input type="submit" value="Submit"/></td>
+        </tr>
+    </table>
+</form>
+
+<div>
+    <p>
+        <a th:href="@{/home}" th:text="#{msg.Home}"/>
+    </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <title>Obsługa notatek</title>
+</head>
+<body>
+<table align="center" border="0" cellpadding="4" cellspacing="1">
+    <tr>
+        <td><a th:href="@{/add-note}" th:text="#{msg.AddNote}"/></td>
+        <td>Dodaj notatkę</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/get-all-notes}" th:text="#{msg.ListAllNotes}"/></td>
+        <td>Wyświetl wszystkie notatki</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/search-notes-creation-date}" th:text="#{msg.SearchNote}"/></td>
+        <td>Szukaj notatek</td>
+    </tr>
+</table>
+</body>
+</html>

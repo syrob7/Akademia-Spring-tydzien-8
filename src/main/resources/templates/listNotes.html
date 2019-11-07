@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <title>Notes List</title>
+    <script type="text/javascript">
+        function changeTrBg(row){
+            row.style.backgroundColor = "#e6e6e6";
+        }
+
+        function defaultTrBg(row){
+            row.style.backgroundColor = "white";
+        }
+    </script>
+</head>
+<body>
+<h1 align="center">Notes List</h1>
+<table align="center"  border="0" cellpadding="4" cellspacing="1">
+    <thead>
+        <tr>
+            <th th:width="50" th:text="#{msg.Id}"/>
+            <th th:width="200"  th:text="#{msg.Content}"/>
+            <th th:width="200" th:text="#{msg.CreateDate}"/>
+            <th th:width="200" th:text="#{msg.ModifyDate}"/>
+            <th th:width="75"/>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:each="note : ${notes}" onmouseover="changeTrBg(this)" onmouseout="defaultTrBg(this)">
+        <td th:align="center" th:text="${note.getId()}"/>
+        <td th:align="center" th:text="${note.getContent()}"/>
+        <td th:align="center" th:text="${note.getCreateDate()}"/>
+        <td th:align="center" th:text="${note.getModifiedDate()}"/>
+        <td th:align="center"> <a th:href="@{/modifyNotes/{id}(id=${note.getId()})}" th:text="#{msg.UpdateNote}"></a></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <p>
+        <a th:href="@{/home}" th:text="#{msg.Home}"/>
+    </p>
+</div>
+</body>
+</html>
