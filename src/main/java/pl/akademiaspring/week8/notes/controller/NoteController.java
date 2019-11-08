@@ -41,7 +41,7 @@ public class NoteController {
     }
 
     @GetMapping("/get-all-notes")
-    public String getAllCars(Model model) {
+    public String getAllNotes(Model model) {
         model.addAttribute("notes", noteService.getAllNotes());
 
         return "listNotes";
