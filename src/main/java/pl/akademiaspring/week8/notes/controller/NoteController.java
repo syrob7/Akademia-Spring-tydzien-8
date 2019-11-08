@@ -67,7 +67,7 @@ public class NoteController {
     }
 
     @PostMapping("/save-new-note")
-    public String saveNewCar(@ModelAttribute Note note, BindingResult result) {
+    public String saveNewNote(@ModelAttribute Note note, BindingResult result) {
 
         new NoteValidator().validate(note, result);
 
@@ -82,8 +82,7 @@ public class NoteController {
 
     @GetMapping("/modifyNotes/{id}")
     public String modifyNoteById(@PathVariable long id, Model model) {
-        Optional<Note> first = noteService.getAllNotes()
-                .stream().filter(c -> c.getId() == id).findFirst();
+        Optional<Note> first = noteService.getNoteById(id);
 
         if (first.isPresent()) {
             model.addAttribute("note", first.get());
@@ -94,7 +93,7 @@ public class NoteController {
     }
 
     @PostMapping("/updateNote")
-    public String updateCar(@ModelAttribute Note note) {
+    public String updateNote(@ModelAttribute Note note) {
         Optional<Note> first = noteService.getNoteById(note.getId());
 
         if (first.isPresent()) {
